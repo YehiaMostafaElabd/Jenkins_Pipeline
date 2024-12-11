@@ -73,20 +73,17 @@ pipeline {
         {
             steps 
             {
-                
+             script
+                {
                     dir ("${WORKSPACE}\\destination_folder")
                     {
-
                         PID = bat(script: "py ProcessID.py .\\eebus-hub-windows-amd64.exe ${PORT}", returnStdout: true).trim()
-      
                         echo "${PID}"
                                           
-
                       // Run the Python script to execute the Go test and generate the JSON file 
-                        bat "py Run_UseCases.py .\\examples\\Api\\LPC\\LPC3\\LPC3.go ${PORT}"
-      
+                        bat "py Run_UseCases.py .\\examples\\Api\\LPC\\LPC3\\LPC3.go ${PORT}"      
                     }
-
+                }
             }
         }
         
