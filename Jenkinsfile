@@ -8,7 +8,8 @@ pipeline {
       
   parameters
   {
-    stashedFile 'Archived_File.zip'
+        string defaultValue: '8080', description: 'If You Are Running Jenkins at Port 8080 Please Select another Port', name: 'PORT'
+        stashedFile 'Archived_File.zip'      
   }
   
   
@@ -56,7 +57,7 @@ pipeline {
                 
              script
                 {
-                        PID = bat(script: 'py ProcessID.py .\\destination_folder\\eebus-hub-windows-amd64.exe', returnStdout: true).trim()
+                        PID = bat(script: 'py ProcessID.py .\\destination_folder\\eebus-hub-windows-amd64.exe ${PORT}', returnStdout: true).trim()
       
                         echo "${PID}"
                 }
@@ -64,7 +65,7 @@ pipeline {
             script
                 {  
                         // Run the Python script to execute the Go test and generate the JSON file 
-                    bat 'py Run_UseCases.py .\\destination_folder\\examples\\Api\\LPC\\LPC3\\LPC3.go' 
+                    bat 'py Run_UseCases.py .\\destination_folder\\examples\\Api\\LPC\\LPC3\\LPC3.go ${PORT}' 
      
                 }
 
