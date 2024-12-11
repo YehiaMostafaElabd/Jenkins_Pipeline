@@ -17,11 +17,14 @@ pipeline {
         {
               script
             {
-                  dir ("${WORKSPACE}")
+                  steps
                   {
-                        cleanWs()
-                        checkout scm
-                  }                  
+                        dir ("${WORKSPACE}")
+                        {
+                              cleanWs()
+                              checkout scm
+                        }
+                  }                 
 
             }
         }
