@@ -13,18 +13,20 @@ pipeline {
   
   
   stages {
-            stage('Clean Workspace')
+        
+        stage('Clean Workspace')
         {
-              script
+            steps
             {
-                  steps
-                  {
-                        dir ("${WORKSPACE}")
-                        {
-                              cleanWs()
-                              checkout scm
-                        }
-                  }                 
+                script
+                {
+                 
+                    dir ("${WORKSPACE}")
+                    {
+                          cleanWs()
+                          checkout scm
+                    }
+                }                 
 
             }
         }
