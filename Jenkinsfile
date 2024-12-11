@@ -31,10 +31,10 @@ pipeline {
 
             }
         }
-        
-        stage('Unstash and Unzip')
-        {
-            steps {
+      stage('Unstash and Unzip')
+      {
+            steps 
+              {
                 bat 'echo Unstash Archived_File.zip.'
                 unstash 'Archived_File.zip'
                 bat  'tar -xf Archived_File.zip'
@@ -45,29 +45,47 @@ pipeline {
                 bat 'dir'
 
                 bat 'echo UNZIP Completed.'
+            }
+      }
+      stage('Moving Scripts')
+      {
+            steps 
+            {
+                script
+                {
+                    bat 'echo Clonning eebus-go to destination_folder'
+                    bat 'MOVE Run_UseCases.py .\\destination_folder'
+                    bat 'MOVE ProcessID.py .\\destination_folder'
+                    bat 'MOVE generate_csv_report.py .\\destination_folder'
+
+                    dir ("${WORKSPACE}\\destination_folder")
+                    {
+                        bat 'mkdir .\\devices\\eebus-go'
+                        bat "git clone https://github.com/enbility/eebus-go.git .\\devices\\eebus-go"
+                    }
+                }
                 
 
             }
-        }
+      }
         
         stage('Running Tests')
         {
             steps 
             {
                 
-             script
-                {
-                        PID = bat(script: 'py ProcessID.py .\\destination_folder\\eebus-hub-windows-amd64.exe ${PORT}', returnStdout: true).trim()
+                    dir ("${WORKSPACE}\\destination_folder")
+                    {
+
+                        PID = bat(script: "py ProcessID.py .\\eebus-hub-windows-amd64.exe ${PORT}", returnStdout: true).trim()
       
                         echo "${PID}"
-                }
-                  
-            script
-                {  
-                        // Run the Python script to execute the Go test and generate the JSON file 
-                    bat 'py Run_UseCases.py .\\destination_folder\\examples\\Api\\LPC\\LPC3\\LPC3.go ${PORT}' 
-     
-                }
+                                          
+
+                      // Run the Python script to execute the Go test and generate the JSON file 
+                        bat "py Run_UseCases.py .\\examples\\Api\\LPC\\LPC3\\LPC3.go ${PORT}"
+      
+                    }
 
             }
         }
@@ -79,8 +97,11 @@ pipeline {
  
                 script
                 {
-                    // Generating Csv Report
-                    bat 'py generate_csv_report.py'
+                     dir ("${WORKSPACE}\\destination_folder")
+                    {
+                        // Generating Csv Report
+                        bat 'py generate_csv_report.py'
+                    }
                 }
             }
         }   
@@ -90,8 +111,10 @@ pipeline {
     post { 
         always
         {
-            archiveArtifacts artifacts: 'test_results.json, test_results.csv', fingerprint: true
-
+            dir ("${WORKSPACE}\\destination_folder")
+            {
+                archiveArtifacts artifacts: 'test_results.json, test_results.csv', fingerprint: true
+            }
         }  
     }   
 }
