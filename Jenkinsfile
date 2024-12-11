@@ -78,7 +78,21 @@ pipeline {
                 {
                     archiveArtifacts artifacts: 'test_results.json, test_results.csv', fingerprint: true
                 }
-            
+                    stage('Clean Workspace')
+         
+     script
+         {
+             dir ("${WORKSPACE}")
+                {
+                
+                cleanWs()
+                bat  "echo Clean Jenkins Workspace before the build starts"
+                
+                }
+                    
+            }
+    
+        
         }  
     }   
 }
