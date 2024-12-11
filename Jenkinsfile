@@ -13,8 +13,18 @@ pipeline {
   
   
   stages {
+            stage('Clean Workspace')
+        {
+              script
+            {
+                  dir ("${WORKSPACE}")
+                  {
+                        cleanWs()
+                        checkout scm
+                  }                  
 
-        
+            }
+        }
         
         stage('Unstash and Unzip')
         {
@@ -74,24 +84,8 @@ pipeline {
     post { 
         always
         {
-           
+            archiveArtifacts artifacts: 'test_results.json, test_results.csv', fingerprint: true
 
-            script
-            {
-                 dir ("${WORKSPACE}")
-                {
-                  cleanWs(deleteDirs: true,
-                          patterns: [[pattern: 'destination_folder', type: 'EXCLUDE'],
-                          [pattern: 'logs', type: 'EXCLUDE'],
-                                     [pattern: 'destination_folder\\eebus-hub-windows-amd64.exe', type: 'EXCLUDE']])
-                   bat  "echo Clean Jenkins Workspace before the build starts"   
-                }                  
-                    
-
-                    
-            }
-    
-        
         }  
     }   
 }
