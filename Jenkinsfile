@@ -74,21 +74,19 @@ pipeline {
     post { 
         always
         {
-            script
-            {
-                    archiveArtifacts artifacts: 'test_results.json, test_results.csv', fingerprint: true
-            }
+           
 
             script
             {
                  dir ("${WORKSPACE}")
                 {
                   cleanWs(deleteDirs: true,
-                          patterns: [[pattern: 'destination_folder', type: 'EXCLUDE']])
+                          patterns: [[pattern: 'destination_folder', type: 'EXCLUDE'],
+                          [pattern: 'logs', type: 'EXCLUDE']])
                    bat  "echo Clean Jenkins Workspace before the build starts"   
                 }                  
                     
-                }
+
                     
             }
     
