@@ -56,7 +56,7 @@ pipeline {
                 
              script
                 {
-                        PID = bat(script: 'python ProcessID.py .\\destination_folder\\eebus-hub-windows-amd64.exe', returnStdout: true).trim()
+                        PID = bat(script: 'py ProcessID.py .\\destination_folder\\eebus-hub-windows-amd64.exe', returnStdout: true).trim()
       
                         echo "${PID}"
                 }
@@ -64,7 +64,7 @@ pipeline {
             script
                 {  
                         // Run the Python script to execute the Go test and generate the JSON file 
-                    bat 'python Run_UseCases.py .\\destination_folder\\examples\\Api\\LPC\\LPC3\\LPC3.go' 
+                    bat 'py Run_UseCases.py .\\destination_folder\\examples\\Api\\LPC\\LPC3\\LPC3.go' 
      
                 }
 
@@ -79,7 +79,7 @@ pipeline {
                 script
                 {
                     // Generating Csv Report
-                    bat 'python generate_csv_report.py'
+                    bat 'py generate_csv_report.py'
                 }
             }
         }   
