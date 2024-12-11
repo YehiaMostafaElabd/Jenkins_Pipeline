@@ -83,8 +83,10 @@ pipeline {
             {
                  dir ("${WORKSPACE}")
                 {
-                    cleanWs()
-                    bat  "echo Clean Jenkins Workspace before the build starts"
+                  cleanWs(deleteDirs: true,
+                          patterns: [[pattern: 'destination_folder', type: 'EXCLUDE']])
+                   bat  "echo Clean Jenkins Workspace before the build starts"   
+                }                  
                     
                 }
                     
