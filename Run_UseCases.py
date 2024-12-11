@@ -2,10 +2,14 @@ import subprocess
 import json
 import sys
 import os
+import argparse
 
-def run_go_test(go_file):
-    # Run the Go file
-    result = subprocess.run(['go', 'run', go_file], capture_output=True, text=True)
+def run_go_test(go_file, ip_address):
+    # Form the ldflags argument with the provided IP address
+    ldflags = f'-X "main.BaseIPAddress=http://{ip_address}/api/v1"'
+
+    # Run the Go file with the ldflags argument
+    result = subprocess.run(['go', 'run', go_file, '-ldflags', ldflags], capture_output=True, text=True)
 
     # Capture stdout and return status
     stdout = result.stdout
@@ -38,9 +42,9 @@ def run_go_test(go_file):
     print(json.dumps(test_results, indent=4))
 
 if __name__ == "__main__":
-    if len(sys.argv) != 2:
-        print("Usage: python run_tests.py <path_to_go_file>")
-        sys.exit(1)
+    parser = argparse.ArgumentParser(description="Run Go test and log results.")
+    parser.add_argument("go_file", help="Path to the Go file.")
+    parser.add_argument("ip_address", help="IP address to be used in the ldflags argument.")
     
-    go_file_path = sys.argv[1]
-    run_go_test(go_file_path)
+    args = parser.parse_args()
+    run_go_test(args.go_file, args.ip_address)
