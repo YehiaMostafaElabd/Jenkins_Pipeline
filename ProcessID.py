@@ -1,11 +1,11 @@
 import subprocess
 import sys
+import argparse
 
-
-def get_pid(executable):
+def get_pid(executable, port):
     try:
-        # Run the application
-        process = subprocess.Popen([executable], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        # Run the application with the port argument
+        process = subprocess.Popen([executable, port], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 
         # Get the PID of the process
         pid = process.pid
@@ -15,14 +15,14 @@ def get_pid(executable):
         print(f'Failed to run the process: {e}')
         return None
 
-
 if __name__ == "__main__":
-    if len(sys.argv) != 2:
-        print("Usage: python PID.py <executable>")
-        sys.exit(1)
+    parser = argparse.ArgumentParser(description="Get the PID of a running process.")
+    parser.add_argument("executable", help="Path to the executable.")
+    parser.add_argument("port", help="Port number to be used.")
 
-    executable = sys.argv[1]
-    pid = get_pid(executable)
+    args = parser.parse_args()
+
+    pid = get_pid(args.executable, args.port)
     if pid is not None:
         print(f'Process ID: {pid}')
     else:
