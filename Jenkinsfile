@@ -83,7 +83,7 @@ pipeline {
                   cleanWs(deleteDirs: true,
                           patterns: [[pattern: 'destination_folder', type: 'EXCLUDE'],
                           [pattern: 'logs', type: 'EXCLUDE'],
-                                     [pattern: 'destination_folder\eebus-hub-windows-amd64.exe', type: 'EXCLUDE']])
+                                     [pattern: 'destination_folder\\eebus-hub-windows-amd64.exe', type: 'EXCLUDE']])
                    bat  "echo Clean Jenkins Workspace before the build starts"   
                 }                  
                     
