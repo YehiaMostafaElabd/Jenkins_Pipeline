@@ -13,22 +13,7 @@ pipeline {
   
   
   stages {
-        stage('Clean Workspace')
-        {
-            steps 
-            {     
-    
-             dir ("${WORKSPACE}")
-                {
-                
-                cleanWs()
-                bat  "echo Clean Jenkins Workspace before the build starts"
-                
-                }
-                    
-            }
-    
-        }
+
         
         
         stage('Unstash and Unzip')
