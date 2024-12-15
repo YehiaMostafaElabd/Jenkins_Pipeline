@@ -27,7 +27,7 @@
   Ensure you have the following installed:
   
   - Make Sure Git and Python are Installed in Tools [ Dashboard > Manage Jenkins > Tools ]
-  - Ensure the Following Plugin is Installed [ Git plugin - Workspace Cleanup Plugin ]
+  - Ensure the Following Plugin is Installed [ Workspace Cleanup Plugin ]
   
   ### Installation
   
@@ -47,7 +47,7 @@
 
   - [Pipeline > Definition > Pipeline script from SCM]
   - [SCM > Select Git]
-  - [Repository URL > <https://www.coretech-innovations.com/products/eebushub/download>]
+  - [Type repository URL > <https://github.com/YehiaMostafaElabd/Jenkins_Pipeline.git>]
   - [Press Save]
         ![Save](https://github.com/user-attachments/assets/4730b9fa-9219-4e46-b285-3ed4433d66a3)
 
@@ -79,9 +79,11 @@
   - Click Build
         ![Build](https://github.com/user-attachments/assets/753cb34e-fa5b-44cd-841f-82370a028c89)
 
-- Artifact For Test Case Will Appear After The Build Finsihes
-         ![Artifact](https://github.com/user-attachments/assets/c3555dce-2cad-458a-833f-24ee94d146a2)
+- The result of the Test case will appear as  an Artifact After The Build Finishes
+  
+     ![Artifact](https://github.com/user-attachments/assets/c3555dce-2cad-458a-833f-24ee94d146a2)
 
+- Note: The Artifact that appear for the last run 
 
  
 
