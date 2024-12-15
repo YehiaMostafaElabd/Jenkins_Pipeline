@@ -67,8 +67,8 @@
         ![Build NOW](https://github.com/user-attachments/assets/31e0f17b-6e3e-440d-b474-1a2eddc06ae7)
   
   - The Pipeline Will Fail for the First Time
-  - 
-        ![Failed1](https://github.com/user-attachments/assets/f28df571-f16d-4292-bdfd-6192aec87777)
+ 
+  - ![Failed1](https://github.com/user-attachments/assets/f28df571-f16d-4292-bdfd-6192aec87777)
 
   - Refresh The Page Then Select [Build With Parmeter]
 
