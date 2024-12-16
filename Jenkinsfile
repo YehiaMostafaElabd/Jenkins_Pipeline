@@ -14,7 +14,7 @@ pipeline {
         string defaultValue: '8080', description: 'If You Are Running Jenkins at Port 8080 Please Select another Port', name: 'PORT'
         stashedFile 'Archived_File.zip'
         string defaultValue: 'built-in', description: 'If you are using another agent please Specify', name: 'Agent'
-
+        string defaultValue: 'python3', description: 'Python Version', name: 'python'
   }
   
   
@@ -40,6 +40,12 @@ pipeline {
       {
             steps 
               {
+               script
+               {
+                      echo "The Node Used To Run This Build Is ${Agent}"
+                      echo "The Port Ruuning EEBUS TOOL is ${PORT}"
+               }
+                    
                 bat 'echo Unstash Archived_File.zip.'
                 unstash 'Archived_File.zip'
                 bat  'tar -xf Archived_File.zip'
@@ -82,11 +88,11 @@ pipeline {
                 {
                     dir ("${WORKSPACE}\\destination_folder")
                     {
-                        PID = bat(script: "py ProcessID.py .\\eebus-hub-windows-amd64.exe ${PORT}", returnStdout: true).trim()
+                        PID = bat(script: "${python} ProcessID.py .\\eebus-hub-windows-amd64.exe ${PORT}", returnStdout: true).trim()
                         echo "${PID}"
                                           
                       // Run the Python script to execute the Go test and generate the JSON file 
-                        bat "py Run_UseCases.py .\\examples\\Api\\LPC\\LPC3\\LPC3.go ${PORT}"      
+                        bat "${python} Run_UseCases.py .\\examples\\Api\\LPC\\LPC3\\LPC3.go ${PORT}"
                     }
                 }
             }
@@ -101,8 +107,8 @@ pipeline {
                 {
                      dir ("${WORKSPACE}\\destination_folder")
                     {
-                        // Generating Csv Report
-                        bat 'py generate_csv_report.py'
+                        // Generating CSV Report
+                        bat "${python} generate_csv_report.py"
                     }
                 }
             }
