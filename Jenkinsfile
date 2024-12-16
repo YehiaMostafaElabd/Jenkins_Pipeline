@@ -3,13 +3,18 @@ def  PID
 
 pipeline {
       
-      agent any
+  agent 
+  {
+        label "${Agent}"
+  }
  
       
   parameters
   {
         string defaultValue: '8080', description: 'If You Are Running Jenkins at Port 8080 Please Select another Port', name: 'PORT'
-        stashedFile 'Archived_File.zip'      
+        stashedFile 'Archived_File.zip'
+        string defaultValue: 'built-in', description: 'If you are using another agent please Specify', name: 'Agent'
+
   }
   
   
