@@ -35,13 +35,13 @@
   
   - Select New Item
 
-       ![New Item](https://github.com/user-attachments/assets/bdc6ce62-1092-457b-9432-024f717a4cd2)
+    ![New Item](https://github.com/user-attachments/assets/bdc6ce62-1092-457b-9432-024f717a4cd2)
 
   - Enter an item name
   - Select Pipeline
   - Press OK
 
-    ![EEBUS Name](https://github.com/user-attachments/assets/619ba862-c3eb-494f-b573-ee53be79f103)
+    ![EEBUS Name](https://github.com/user-attachments/assets/543594c1-58f9-4fae-a0ff-05b7ca33f22b)
 
 
   - Press Pipeline
@@ -68,24 +68,26 @@
   ## 📘 Usage
   
   - Select Build NOW
-        ![Build NOW](https://github.com/user-attachments/assets/31e0f17b-6e3e-440d-b474-1a2eddc06ae7)
+
+    ![Build NOW](https://github.com/user-attachments/assets/31e0f17b-6e3e-440d-b474-1a2eddc06ae7)
   
   - The Pipeline Will Fail for the First Time
  
-  - ![Failed1](https://github.com/user-attachments/assets/f28df571-f16d-4292-bdfd-6192aec87777)
+    ![Failed1](https://github.com/user-attachments/assets/f28df571-f16d-4292-bdfd-6192aec87777)
 
   - Refresh The Page Then Select [Build With Parmeter]
 
-      ![Build](https://github.com/user-attachments/assets/a56eaaa8-7e64-40c7-a255-f26d753daa15)
+    ![Build](https://github.com/user-attachments/assets/a56eaaa8-7e64-40c7-a255-f26d753daa15)
 
   - Change The PORT if Jenkins is Running on <http://localhost:8080/>
   - Select the Archived File Downloaded from <https://www.coretech-innovations.com/products/eebushub/download>
   - Click Build
-        ![Build](https://github.com/user-attachments/assets/753cb34e-fa5b-44cd-841f-82370a028c89)
+
+    ![Build](https://github.com/user-attachments/assets/753cb34e-fa5b-44cd-841f-82370a028c89)
 
 - The result of the Test case will appear as  an Artifact After The Build Finishes
   
-     ![Artifact](https://github.com/user-attachments/assets/c3555dce-2cad-458a-833f-24ee94d146a2)
+    ![Artifact](https://github.com/user-attachments/assets/c3555dce-2cad-458a-833f-24ee94d146a2)
 
 - Note: The Artifact that appear for the last run 
 
