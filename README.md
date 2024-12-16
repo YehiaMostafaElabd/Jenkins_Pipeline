@@ -34,22 +34,26 @@
   1. Go to Jenkins 
   
   - Select New Item
-        ![New Item](https://github.com/user-attachments/assets/bdc6ce62-1092-457b-9432-024f717a4cd2)
+
+       ![New Item](https://github.com/user-attachments/assets/bdc6ce62-1092-457b-9432-024f717a4cd2)
 
   - Enter an item name
   - Select Pipeline
   - Press OK
-        ![Save](https://github.com/user-attachments/assets/d1a985b5-dc3c-4cc8-a2d9-b811356d534e)
+
+    ![EEBUS Name](https://github.com/user-attachments/assets/619ba862-c3eb-494f-b573-ee53be79f103)
 
 
   - Press Pipeline
+  
     ![Select-Pipeline](https://github.com/user-attachments/assets/84a792f6-90c5-4316-9c72-b5aee9faddcc)
 
   - [Pipeline > Definition > Pipeline script from SCM]
   - [SCM > Select Git]
   - [Type repository URL > <https://github.com/YehiaMostafaElabd/Jenkins_Pipeline.git>]
   - [Press Save]
-        ![Save](https://github.com/user-attachments/assets/4730b9fa-9219-4e46-b285-3ed4433d66a3)
+  
+    ![Save](https://github.com/user-attachments/assets/4730b9fa-9219-4e46-b285-3ed4433d66a3)
 
   
 
