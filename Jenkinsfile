@@ -64,16 +64,14 @@ pipeline {
             {
                 script
                 {
-                    echo "Clonning eebus-go to destination_folder"
-                    bat 'MOVE Run_UseCases.py .\\destination_folder'
-                    bat 'MOVE ProcessID.py .\\destination_folder'
-                    bat 'MOVE generate_csv_report.py .\\destination_folder'
+                    echo "Clonning Repository"
+                    bat "git clone --recurse-submodules https://github.com/Coretech-Innovations/EEBus-Hub.git"
+                    bat 'MOVE Run_UseCases.py .\\EEBus-Hub'
+                    bat 'MOVE ProcessID.py .\\EEBus-Hub'
+                    bat 'MOVE generate_csv_report.py .\\EEBus-Hub'
+                    bat 'MOVE eebus-hub-windows-amd64.exe .\\EEBus-Hub'
 
-                    dir ("${WORKSPACE}\\destination_folder")
-                    {
-                        bat 'mkdir .\\devices\\eebus-go'
-                        bat "git clone https://github.com/enbility/eebus-go.git .\\devices\\eebus-go"
-                    }
+
                 }
                 
 
@@ -86,7 +84,7 @@ pipeline {
             {
              script
                 {
-                    dir ("${WORKSPACE}\\destination_folder")
+                    dir ("${WORKSPACE}\\EEBus-Hub")
                     {
                         PID = bat(script: "${python} ProcessID.py .\\eebus-hub-windows-amd64.exe ${PORT}", returnStdout: true).trim()
                         echo "${PID}"
@@ -105,7 +103,7 @@ pipeline {
  
                 script
                 {
-                     dir ("${WORKSPACE}\\destination_folder")
+                     dir ("${WORKSPACE}\\eebus-hub-windows-amd64.exe")
                     {
                         // Generating CSV Report
                         bat "${python} generate_csv_report.py"
@@ -119,7 +117,7 @@ pipeline {
     post { 
         always
         {
-            dir ("${WORKSPACE}\\destination_folder")
+            dir ("${WORKSPACE}\\eebus-hub-windows-amd64.exe")
             {
                 archiveArtifacts artifacts: 'test_results.json, test_results.csv', fingerprint: true
             }
