@@ -46,7 +46,7 @@ pipeline {
                       echo "The Port Ruuning EEBUS TOOL is ${PORT}"
                }
                     
-                bat 'echo Unstash Archived_File.zip.'
+                echo "Unstash Archived_File.zip."
                 unstash 'Archived_File.zip'
                 bat  'tar -xf Archived_File.zip'
                 bat 'dir'
@@ -55,7 +55,7 @@ pipeline {
                 
                 bat 'dir'
 
-                bat 'echo UNZIP Completed.'
+                echo "UNZIP Completed."
             }
       }
       stage('Moving Scripts')
@@ -64,7 +64,7 @@ pipeline {
             {
                 script
                 {
-                    bat 'echo Clonning eebus-go to destination_folder'
+                    echo "Clonning eebus-go to destination_folder"
                     bat 'MOVE Run_UseCases.py .\\destination_folder'
                     bat 'MOVE ProcessID.py .\\destination_folder'
                     bat 'MOVE generate_csv_report.py .\\destination_folder'
