@@ -103,7 +103,7 @@ pipeline {
  
                 script
                 {
-                     dir ("${WORKSPACE}\\eebus-hub-windows-amd64.exe")
+                     dir ("${WORKSPACE}\\EEBus-Hub")
                     {
                         // Generating CSV Report
                         bat "${python} generate_csv_report.py"
@@ -117,7 +117,7 @@ pipeline {
     post { 
         always
         {
-            dir ("${WORKSPACE}\\eebus-hub-windows-amd64.exe")
+            dir ("${WORKSPACE}\\EEBus-Hub")
             {
                 archiveArtifacts artifacts: 'test_results.json, test_results.csv', fingerprint: true
             }
