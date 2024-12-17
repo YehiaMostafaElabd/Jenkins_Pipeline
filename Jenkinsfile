@@ -119,7 +119,7 @@ pipeline {
         {
             dir ("${WORKSPACE}\\EEBus-Hub")
             {
-                archiveArtifacts artifacts: 'test_results.json, test_results.csv', fingerprint: true
+                archiveArtifacts artifacts: 'test_results.json, test_results.csv, test.log', fingerprint: true
             }
         }  
     }   
