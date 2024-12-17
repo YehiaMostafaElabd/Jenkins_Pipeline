@@ -2,7 +2,7 @@
 setlocal enabledelayedexpansion
 
 rem Set the destination folder
-set DEST_FOLDER=destination_folder
+set DEST_FOLDER=.
 
 rem Loop through all zip files matching the pattern
 for %%f in (eebus-hub-windows-amd64*.zip) do (
