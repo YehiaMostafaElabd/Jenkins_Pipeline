@@ -33,7 +33,7 @@ pipeline {
                           //checkout scm
                           checkout([$class: 'GitSCM', branches: [[name: '*/main']], doGenerateSubmoduleConfigurations: false, extensions: [[ $class: 'SubmoduleOption', disableSubmodules: false, parentCredentials: true ]]])
                 }                 
-
+                }
             }
         }
       stage('Unstash and Unzip')
