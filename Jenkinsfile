@@ -31,8 +31,7 @@ pipeline {
                     {
                           cleanWs()
                           //checkout scm
-                          checkout([$class: 'GitSCM', branches: [[name: '*/main']], doGenerateSubmoduleConfigurations: false, extensions: [[ $class: 'SubmoduleOption', disableSubmodules: false, parentCredentials: true
-                    }
+                          checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [[ $class: 'SubmoduleOption', disableSubmodules: false, parentCredentials: true ]]])
                 }                 
 
             }
