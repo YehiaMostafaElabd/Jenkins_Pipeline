@@ -30,8 +30,9 @@ pipeline {
                     dir ("${WORKSPACE}")
                     {
                           cleanWs()
-                          //checkout scm
-                          checkout([$class: 'GitSCM', branches: [[name: '*/main']], doGenerateSubmoduleConfigurations: false, extensions: [[ $class: 'SubmoduleOption', disableSubmodules: false, parentCredentials: true ]]])
+                          checkout scm
+                          bat 'git submodule update --init --recursive'
+
                 }                 
                 }
             }
