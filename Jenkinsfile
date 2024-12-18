@@ -30,7 +30,8 @@ pipeline {
                     dir ("${WORKSPACE}")
                     {
                           cleanWs()
-                          checkout scm
+                          //checkout scm
+                          checkout([$class: 'GitSCM', branches: [[name: '*/main']], doGenerateSubmoduleConfigurations: false, extensions: [[ $class: 'SubmoduleOption', disableSubmodules: false, parentCredentials: true
                     }
                 }                 
 
